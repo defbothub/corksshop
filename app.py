@@ -69,6 +69,4 @@ async def on_shutdown():
     await dp.storage.wait_closed()
     logging.warning("Bot down")
 
-
-if __name__ == '__main__':
-    executor.start_polling(dp, on_startup=on_startup, skip_updates=False)
+executor.start_polling(dp, on_startup=on_startup, skip_updates=False)
