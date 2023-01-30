@@ -60,6 +60,7 @@ async def scheduler():
 async def on_startup(dp):
     logging.basicConfig(level=logging.INFO)
     db.create_tables()
+    print("Bot online!")
 
 
 async def on_shutdown():
@@ -69,4 +70,6 @@ async def on_shutdown():
     await dp.storage.wait_closed()
     logging.warning("Bot down")
 
-executor.start_polling(dp, on_startup=on_startup, skip_updates=False)
+
+if __name__ == '__main__':
+    executor.start_polling(dp, on_startup=on_startup, skip_updates=True)
