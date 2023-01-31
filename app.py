@@ -29,7 +29,7 @@ async def cmd_start(message: types.Message):
                              '\nГарного робочого дня 🤗'
                              '\nТисни Menu і почнемо...', reply_markup=menu_markup())
     else:
-        await message.answer('''Бот винного бутіка CORKS вітає Вас! Натисніть Menu, щоб продовжити.   👇''',
+        await message.answer('''Натисніть Menu, щоб продовжити.   👇''',
                              reply_markup=menu_markup())
 
 # @dp.message_handler(text=user_message)
