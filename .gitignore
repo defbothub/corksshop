@@ -6,7 +6,6 @@ __pycache__/
 *.log
 venv/
 *.session
-data/database.db
 
 # vscode
 .vscode
