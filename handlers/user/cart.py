@@ -308,5 +308,5 @@ async def process_confirm(message: Message, state: FSMContext):
 
 
     await state.finish()
-    await bot.send_message(chat_id=5791823682, text="Нове замовлення!")
+    await bot.send_message(chat_id=672637518, text="Нове замовлення!")
     await message.answer("Дякуємо за замовлення! \nЩоб продовжити покупки, натисніть Menu", reply_markup=menu_markup())
