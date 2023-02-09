@@ -61,7 +61,7 @@ async def scheduler():
         await aioschedule.run_pending()
         await asyncio.sleep(1)
 
-async def on_startup():
+async def on_startup(dp):
     logging.basicConfig(level=logging.INFO)
     db.create_tables()
     print("Bot online!")
