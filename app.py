@@ -11,6 +11,10 @@ import logging
 import aioschedule
 import asyncio
 import datetime
+import psycopg2 as ps
+
+base = ps.connect(os.environ.get('DATABASE_URL'), sslmode='require')
+cur = base.cursor()
 
 filters.setup(dp)
 
@@ -57,7 +61,7 @@ async def scheduler():
         await aioschedule.run_pending()
         await asyncio.sleep(1)
 
-async def on_startup(dp):
+async def on_startup():
     logging.basicConfig(level=logging.INFO)
     db.create_tables()
     print("Bot online!")
@@ -66,6 +70,8 @@ async def on_startup(dp):
 async def on_shutdown():
     logging.warning("Shutting down..")
     await bot.delete_webhook()
+    cur.close()
+    base.close()
     await dp.storage.close()
     await dp.storage.wait_closed()
     logging.warning("Bot down")
