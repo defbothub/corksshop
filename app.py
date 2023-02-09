@@ -14,7 +14,7 @@ import datetime
 import psycopg2 as ps
 
 base = ps.connect(os.environ.get('DATABASE_URL'), sslmode='require')
-cur = base.cursor()
+cur = base.cursor(db)
 
 filters.setup(dp)
 
