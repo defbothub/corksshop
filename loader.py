@@ -2,6 +2,7 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from utils.db.storage import DatabaseManager
 import logging
+import os
 from data import config
 import psycopg2 as ps
 
