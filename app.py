@@ -5,16 +5,13 @@ from keyboards import *
 from aiogram import executor, types
 from aiogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove
 from data import config
-from loader import dp, db, bot
+from loader import dp, db, bot, base, cur
 import filters
 import logging
 import aioschedule
 import asyncio
 import datetime
-import psycopg2 as ps
 
-base = ps.connect(os.environ.get('DATABASE_URL'), sslmode='require')
-cur = base.cursor()
 
 filters.setup(dp)
 
@@ -61,7 +58,7 @@ async def scheduler():
         await aioschedule.run_pending()
         await asyncio.sleep(1)
 
-async def on_startup():
+async def on_startup(dp):
     logging.basicConfig(level=logging.INFO)
     db.create_tables()
     print("Bot online!")

@@ -2,8 +2,11 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from utils.db.storage import DatabaseManager
 import logging
-
 from data import config
+import psycopg2 as ps
+
+base = ps.connect(os.environ.get('DATABASE_URL'), sslmode='require')
+cur = base.cursor()
 
 logging.basicConfig(filename="main.log",
                     filemode='a',

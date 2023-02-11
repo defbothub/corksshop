@@ -28,7 +28,7 @@ async def category_callback_handler(query: CallbackQuery, callback_data: dict):
     for idx, title, _, _, _, _, _ in products:
         ls.append((title,idx))
     await query.message.answer('Оберіть товари зі списку 👇 '
-                               '\nКільсть кожного товару'
+                               '\nКількість кожного товару'
                                '\nможна додати в 🛒Корзині', reply_markup=categories_markup_test(ls))
     # await show_products_test(query.message, products)
 
